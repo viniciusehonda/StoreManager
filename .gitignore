@@ -65,7 +65,7 @@ publish/
 out/
 
 # Uncomment if using secrets in a JSON file
-# appsettings.*.json
+appsettings.*.json
 
 # Package directories
 **/bin
