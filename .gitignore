@@ -1,0 +1,114 @@
+# ASP.NET Core
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider/JetBrains
+.idea/
+*.sln.iml
+*.sln.ide.*
+
+# VS Code
+.vscode/
+.vs/
+
+# DotNet specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.log
+
+# Environment
+.env
+.env.*
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# NPM packages
+node_modules/
+
+# Logs
+*.log
+
+# Local history
+.history/
+
+# SQLite database
+*.db
+*.sqlite
+
+# Entity Framework migrations
+Migrations/
+
+# Published files
+publish/
+out/
+
+# Uncomment if using secrets in a JSON file
+# appsettings.*.json
+
+# Package directories
+**/bin
+**/obj
+
+# Azure Functions local settings file
+local.settings.json
+
+# Visual Studio working folders
+.vs/
+.vscode/
+
+# Exclude all test assets
+TestResults/
+*.Tests/bin/
+*.Tests/obj/
+
+# ASP.NET Scaffolding
+.scaffolding
+
+# T4 files
+*.generated.cs
+
+# NCrunch
+_NCrunch_*
+
+# Git local
+.git/
+
+# JetBrains Rider
+.idea/
+.idea_modules/
+
+# Logs
+*.log
+
+# Temporary Files
+*.tmp
+*.temp
+
+# Azure App Service files
+.ase/ 
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
