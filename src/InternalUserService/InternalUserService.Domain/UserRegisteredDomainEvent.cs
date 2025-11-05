@@ -2,4 +2,4 @@
 
 namespace InternalUserService.Domain;
 
-public sealed record UserRegisteredDomainEvent(Guid UserId) : IDomainEvent;
+public sealed record UserRegisteredDomainEvent(Guid UserId, string email, string firstName, string lastName) : IDomainEvent;

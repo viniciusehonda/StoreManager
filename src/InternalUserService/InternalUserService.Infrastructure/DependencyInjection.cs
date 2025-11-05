@@ -3,6 +3,7 @@ using InternalUserService.Application.Abstractions.Authentication;
 using InternalUserService.Application.Abstractions.Data;
 using InternalUserService.Infrastructure;
 using InternalUserService.Infrastructure.Database;
+using InternalUserService.Infrastructure.Messaging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,8 @@ public static class DependencyInjection
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         services.AddTransient<IDomainEventsDispatcher, DomainEventsDispatcher>();
+
+        services.AddSingleton<IEventPublisher, KafkaEventPublisher>();
 
         return services;
     }

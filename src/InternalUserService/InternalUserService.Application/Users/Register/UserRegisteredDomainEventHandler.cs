@@ -1,22 +1,27 @@
 ﻿using InternalUserService.Domain;
+using Microsoft.Extensions.Logging;
 using SharedKernel;
 
 namespace InternalUserService.Application.Users.Register;
 
 internal sealed class UserRegisteredDomainEventHandler : IDomainEventHandler<UserRegisteredDomainEvent>
 {
-    public Task Handle(UserRegisteredDomainEvent domainEvent, CancellationToken cancellationToken)
-    {
-        // TODO: Send an email verification link, etc.
-        return Task.CompletedTask;
-    }
-}
+    private readonly IEventPublisher _eventPublisher;
+    private readonly ILogger<UserRegisteredDomainEventHandler> _logger;
 
-internal sealed class UserRegisteredDomainEventHandler1 : IDomainEventHandler<UserRegisteredDomainEvent>
-{
-    public Task Handle(UserRegisteredDomainEvent domainEvent, CancellationToken cancellationToken)
+    public UserRegisteredDomainEventHandler(IEventPublisher eventPublisher,
+            ILogger<UserRegisteredDomainEventHandler> logger)
     {
-        // TODO: Send an email verification link, etc.
-        return Task.CompletedTask;
+        _eventPublisher = eventPublisher;
+        _logger = logger;
+    }
+
+    public async Task Handle(UserRegisteredDomainEvent domainEvent, CancellationToken cancellationToken)
+    {
+        _logger.LogInformation("Handling UserRegisteredEvent for {UserId}", domainEvent.UserId);
+
+        await _eventPublisher.PublishAsync(domainEvent, topic: "user-events");
+
+        _logger.LogInformation("UserRegisteredEvent published to Kafka topic 'user-events'");
     }
 }
