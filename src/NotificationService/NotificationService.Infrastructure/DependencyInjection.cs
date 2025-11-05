@@ -5,6 +5,7 @@ using Confluent.Kafka;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NotificationService.Domain.Interfaces;
+using NotificationService.Infrastructure.Messaging;
 using NotificationService.Infrastructure.Notifications;
 
 namespace NotificationService.Infrastructure;
@@ -19,7 +20,7 @@ public static class DependencyInjection
     private static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddScoped<INotificationSender, EmailSender>();
-        services.AddHostedService<KafkaConsumerService>();
+        services.AddHostedService<UserRegisteredConsumer>();
 
         return services;
     }

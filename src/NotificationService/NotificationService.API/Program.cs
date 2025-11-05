@@ -21,8 +21,6 @@ app.MapHealthChecks("health", new HealthCheckOptions
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
 
-app.UseExceptionHandler();
-
 await app.RunAsync();
 
 namespace NotificationService.Api

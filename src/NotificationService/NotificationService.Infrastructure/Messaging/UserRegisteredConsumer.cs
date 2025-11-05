@@ -10,16 +10,16 @@ using Microsoft.Extensions.Logging;
 using NotificationService.Application;
 using NotificationService.Application.DTOs;
 
-namespace NotificationService.Infrastructure;
-public class KafkaConsumerService : BackgroundService
+namespace NotificationService.Infrastructure.Messaging;
+public class UserRegisteredConsumer : BackgroundService
 {
     private readonly IConfiguration _config;
-    private readonly ILogger<KafkaConsumerService> _logger;
+    private readonly ILogger<UserRegisteredConsumer> _logger;
     private readonly IServiceProvider _serviceProvider;
 
-    public KafkaConsumerService(
+    public UserRegisteredConsumer(
         IConfiguration config,
-        ILogger<KafkaConsumerService> logger,
+        ILogger<UserRegisteredConsumer> logger,
         IServiceProvider serviceProvider)
     {
         _config = config;
@@ -37,7 +37,7 @@ public class KafkaConsumerService : BackgroundService
         };
 
         using IConsumer<Ignore, string> consumer = new ConsumerBuilder<Ignore, string>(conf).Build();
-        consumer.Subscribe(_config["Kafka:Topic"]);
+        consumer.Subscribe("user-events");
 
         _logger.LogInformation("Consumer Kafka iniciado...");
 
